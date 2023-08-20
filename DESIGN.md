@@ -1,17 +1,17 @@
-# libcanard design document
+# libcanard 설계 문서
 
-## Design goals
+## Design 목표
 
-The following list contains main design goals in the order of importance.
+아래 목록은 중요성의 순서에 따른 설계 목표를 포함하고 있다.
 
 * *Small ROM footprint*.
-    A minimal node that periodically publishes `uavcan.protocol.NodeStatus` and responds to `uavcan.protocol.GetNodeInfo` should not require more than 4K of ROM.
-    For reference, a similar application based on libuavcan requires 19K of ROM (LPC11C24).
+    주기적으로 `uavcan.protocol.NodeStatus`를 publish하고 `uavcan.protocol.GetNodeInfo`에 대한 응답하는 minimal node는 ROM의 4K를 넘지 않아야 한다.
+    참고로 libuavcan을 기반으로 유사한 application은 ROM(LPC11C24)에서 19K가 필요하다.
 * *Small RAM footprint*.
-    A node like in the example above should not require more than 4K of RAM, including the stack and buffers.
-    For reference, a similar application based on libuavcan requires about 6K of RAM.
+    위 예제에서와 같은 node는 stack과 buffers를 포함해서 4K RAM을 넘지 않아야 한다.
+    참고로 libuavcan을 기반으로 유사한 application은 6K RAM을 필요로 한다.
 * *Determinism*.
-    Worst case execution time of all code paths should be predictable, which precludes use of heap.
+    최악의 경우 모든 코드 경로에 대한 실행 시간은 추정이 가능해야하고 이렇게 해야 heap을 사용하지 않을 수 있다.
 * *Portability*.
     The library should not present any specific requirements to the underlying hardware or OS, and it must be coded in standard C99.
     However, the portability requirement can be superseded by other design goals, such as small memory footprint.

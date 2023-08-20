@@ -48,11 +48,11 @@ cmake --build build
 ctest .
 ```
 
-There is no dedicated documentation for the library API, because it is simple enough to be self-documenting.
-Please check out the explanations provided in the comments in the header file to learn the basics.
-Most importantly, check out the [examples](examples) directory for fully worked examples
+library API에 대한 문서는 없다. 왜냐하면 코드 자체로 충분하기 때문이다.
+기본을 익히고자 한다면 헤더 파일내에 코멘트에서 제공하는 설명을 확인해보자.
+가장 중요한 것은 완전히 동작하는 [examples](examples) 디렉토리를 확인하는 것이다.
 
-For generation of de-serialisation and serialisation source code, please refer https://github.com/dronecan/dronecan_dsdlc .
+역직렬화와 직렬화 소스 코드의 생성을 위해서 https://github.com/dronecan/dronecan_dsdlc 를 참조하자.
 
 ## C++ Interface
 
