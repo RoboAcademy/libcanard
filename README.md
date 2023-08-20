@@ -20,31 +20,26 @@ git submodule add https://github.com/DroneCAN/libcanard
 - `canard_internals.h` - library의 내부 정의;
 `canard.c`와 같은 디렉토리내에 이 파일을 위치시기키
 
-Add `canard.c` to your application build, add `libcanard` directory to the include paths,
-and you're ready to roll.
+`canard.c`를 application build에 추가, `libcanard` 디렉토리를 include path에 추가하면 준비가 된 것이다.
 
-Also you may want to use one of the available drivers for various CAN backends
-that are distributed with Libcanard - check out the `drivers/` directory to find out more.
+Libcanard와 함께 배포되는 여러 CAN 백엔드를 위한 다양한 드라이버 중에 하나를 사용하고 싶을 수도 있다. - `drivers/` 디렉토리를 확인해보자.
 
-If you wish to override some of the default options, e.g., assert macros' definition,
-define the macro `CANARD_ENABLE_CUSTOM_BUILD_CONFIG` as a non-zero value
-(e.g. for GCC or Clang: `-DCANARD_ENABLE_CUSTOM_BUILD_CONFIG=1`)
-and provide your implementation in a file named `canard_build_config.h`.
+기본 옵션의 일부를 덮어쓰기를 하려면 에제로 assert macros의 정의 `CANARD_ENABLE_CUSTOM_BUILD_CONFIG` 를 0이 아닌 값으로 설정한다.(GCC나 Clang: `-DCANARD_ENABLE_CUSTOM_BUILD_CONFIG=1`)와 `canard_build_config.h` 파일 내부에서 구현부를 제공한다.
 
-Example for Make:
+Make 예제:
 
 ```make
-# Adding the library.
+# library 추가하기
 INCLUDE += libcanard
 CSRC += libcanard/canard.c
 
-# Adding drivers, unless you want to use your own.
-# In this example we're using Linux SocketCAN drivers.
+# drivers 추가하기 (여러분의 것을 사용하지 않는 경우)
+# 이 예제에서 Linux SocketCAN drivers를 사용
 INCLUDE += libcanard/drivers/socketcan
 CSRC += libcanard/drivers/socketcan/socketcan.c
 ```
 
-Example for CMake, first installing dependencies. 
+CMake 예제, 먼저 dependencies를 설치
 
 ```bash
 sudo apt-get update && sudo apt-get install gcc-multilib g++-multilib
