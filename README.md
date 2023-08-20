@@ -1,25 +1,24 @@
 # Libcanard
 
-Minimal implementation of the DroneCAN protocol stack in C for resource constrained applications.
+C로 DroneCAN protocol statck 최소 구현(임베디드 장치같이 리소스가 작은 장치에 적합)
 
-Get help on the **[DroneCAN Forum](https://dronecan.org/discord)**.
+**[DroneCAN Forum](https://dronecan.org/discord)** 에서 도움얻기.
 
 ## Usage
-
-If you're not using Git, you can just copy the entire library into your project tree.
-If you're using Git, it is recommended to add Libcanard to your project as a Git submodule,
-like this:
+* Git을 사용안하는 경우 복사해서 원하는 프로젝트에 넣기
+* 추천하는 방식은 submodule로 project에 추가하는 방식
+아래와 같이:
 
 ```bash
 git submodule add https://github.com/DroneCAN/libcanard
 ```
 
-The entire library is contained in three files:
+전체 library는 3개 파일로 구성 :
 
-- `canard.c` - the only translation unit; add it to your build or compile it into a separate static library;
-- `canard.h` - the API header; include it in your application;
-- `canard_internals.h` - internal definitions of the library;
-keep this file in the same directory with `canard.c`.
+- `canard.c` - 유일한 translation unit; 별도의 static library로 빌드나 컴파일에 추가;
+- `canard.h` - API header; 여러분의 project 내에서 이것을  include;
+- `canard_internals.h` - library의 내부 정의;
+`canard.c`와 같은 디렉토리내에 이 파일을 위치시기키
 
 Add `canard.c` to your application build, add `libcanard` directory to the include paths,
 and you're ready to roll.
@@ -62,20 +61,19 @@ For generation of de-serialisation and serialisation source code, please refer h
 
 ## C++ Interface
 
-The C++ interface is in the canard/ directory. See
-[examples/ESCNode_C++](examples/ESCNode_C++) for a fully worked example of the C++ API.
+canard/ directory 내부에 C++ interface가 있다. C++ API로 완전히 동작하는 예제는 [examples/ESCNode_C++](examples/ESCNode_C++) 를 참고하자.
 
-## Library Development
+## Library 개발
 
-This section is intended only for library developers and contributors.
+이 섹션은 library 개발자와 contributors 만을 위한 부분.
 
-The library design document can be found in [DESIGN.md](DESIGN.md)
+이 library 설계 문서는 [DESIGN.md](DESIGN.md) 내에서 찾을 수 있다.
 
-### Building and Running Tests
+### 빌드하기 와 Tests 실행하기
 
 ```bash
 mkdir build && cd build
-cmake ../libcanard/tests    # Adjust path if necessary
+cmake ../libcanard/tests    # 필요하면 경로를 조정하기
 make
 ./run_tests
 ```
